@@ -1,0 +1,37 @@
+<h1>DBZ</h1>
+<div class="row">
+    <div class="col">
+        <h3>Personajes</h3>
+        <hr>
+        <ul>
+            <li *ngFor="let personaje of personajes">
+                {{ personaje.nombre }} - {{ personaje.poder | number }}
+            </li>
+        </ul>
+    </div>
+    
+    <div class="col">
+        <h3>Agregar <small>{{ nuevo.nombre }}</small></h3>
+        <hr>
+        <!-- Con el ngSubmit ya no se hace refresh de la pagina al enviar el formulario -->
+        <!-- Los corchetes de value [] son para establecer valores -->
+        <!-- Los () son para escuchar eventos -->
+
+        <!--  [(ngModel)] conocido como Two Way Data Bindig: tanto emite como recibe eventos o propiedades -->
+        <form (ngSubmit) ="agregar()">
+            <input [(ngModel)] = "nuevo.nombre" 
+                   placeholder="Nombre" 
+                   name="nombre" 
+                   type="text"
+            >
+            <!--[value]="nuevo.nombre" 
+                   (input)="cambiarNombre( $event )"-->
+            <input [(ngModel)] = "nuevo.poder" 
+                   placeholder="Poder" 
+                   name="poder" 
+                   type="text"
+            >
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+</div>
